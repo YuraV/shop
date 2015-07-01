@@ -1,0 +1,14 @@
+.page-header
+  = link_to currencies_path, class: 'btn btn-default' do
+    %span.glyphicon.glyphicon-list-alt
+    Back
+  = link_to edit_currency_path(@currency), class: 'btn btn-primary' do
+    %span.glyphicon.glyphicon-pencil
+    Edit
+  %h1 Show currency
+
+%dl.dl-horizontal
+  %dt Iso:
+  %dd= @currency.iso
+  %dt Rate:
+  %dd= @currency.rate.to_f

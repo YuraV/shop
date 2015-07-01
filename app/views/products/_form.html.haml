@@ -1,0 +1,40 @@
+= form_for @product, html: { class: "form-horizontal", role: "form" } do |f|
+  -if @product.errors.any?
+    .alert.alert-danger.alert-dismissable{role: "alert"}
+      %button.close{type: "button", data: {dismiss: "alert"} }
+        %span{aria: {hidden: "true"} } &times;
+        %span.sr-only Close
+      %h4= "#{pluralize(@product.errors.count, "error")} prohibited this product from being saved:"
+
+      %ul
+        - @product.errors.full_messages.each do |msg|
+          %li= msg
+
+  .form-group
+    = f.label :title, class: 'col-sm-2 control-label'
+    .col-sm-10
+      = f.text_field :title, class: 'form-control'
+  .form-group
+    = f.label :description, class: 'col-sm-2 control-label'
+    .col-sm-10
+      = f.text_area :description, class: 'form-control'
+  .form-group
+    = f.label :picture, class: 'col-sm-2 control-label'
+    .col-sm-10
+      = f.file_field :picture
+  .form-group
+    = f.label :price, class: 'col-sm-2 control-label'
+    .col-sm-10
+      = f.number_field :price, class: 'form-control'
+  .form-group
+    = f.label :currency, class: 'col-sm-2 control-label'
+    .col-sm-10
+      = f.select :currency, get_currencies, class: 'form-control'
+  .form-group
+    .col-sm-offset-2.col-sm-10
+      = f.select :category_id, categories, prompt: 'Please Select Category', class: 'btn btn-primary'
+
+  .form-group
+    .col-sm-offset-2.col-sm-10
+      = f.submit class: 'btn btn-primary'
+

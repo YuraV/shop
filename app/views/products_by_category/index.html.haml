@@ -1,0 +1,29 @@
+.page-header
+  = link_to root_path, class: 'btn btn-primary' do
+    %span.glyphicon.glyphicon-plus
+    Back
+  %h1 Listing products By Category
+
+.table-responsive
+  %table.table.table-striped.table-bordered.table-hover
+    %thead
+      %tr
+        %th Title
+        %th Description
+        %th Products
+        %th
+        %th
+        %th
+
+    %tbody
+      - @categories.each do |category|
+        %tr
+          %td= category.title
+          %td= category.description
+          -#%td
+            =image_tag product.picture.url(:thumb)
+          %td= category.products.size
+          -#%td= product.currency
+          -#%td= link_to 'Show', product
+          -#%td= link_to 'Edit', edit_product_path(product)
+          -#%td= link_to 'Destroy', product, data: { confirm: 'Are you sure?' }, method: :delete

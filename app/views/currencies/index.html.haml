@@ -1,0 +1,24 @@
+.page-header
+  = link_to new_currency_path, class: 'btn btn-primary' do
+    %span.glyphicon.glyphicon-plus
+    New Currency
+  %h1 Listing currencies
+
+.table-responsive
+  %table.table.table-striped.table-bordered.table-hover
+    %thead
+      %tr
+        %th Iso
+        %th Rate
+        %th
+        %th
+        %th
+
+    %tbody
+      - @currencies.each do |currency|
+        %tr
+          %td= currency.iso
+          %td= currency.rate
+          %td= link_to 'Show', currency
+          %td= link_to 'Edit', edit_currency_path(currency)
+          %td= link_to 'Destroy', currency, data: { confirm: 'Are you sure?' }, method: :delete

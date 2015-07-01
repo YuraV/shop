@@ -1,0 +1,26 @@
+.page-header
+  = link_to products_path, class: 'btn btn-default' do
+    %span.glyphicon.glyphicon-list-alt
+    Back
+  = link_to edit_product_path(@product), class: 'btn btn-primary' do
+    %span.glyphicon.glyphicon-pencil
+    Edit
+  %h1 Show product
+
+%dl.dl-horizontal
+  %dt Title:
+  %dd= @product.title
+  %dt Description:
+  %dd= @product.description
+  %dt Picture:
+  %dd
+    =image_tag @product.picture.url(:medium)
+  %dt Price:
+  %dd
+    = @product.price
+    = @product.currency
+  %dt=t('.or')
+  %dd
+    = eur_to_uah @product.price
+
+
